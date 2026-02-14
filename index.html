@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAINMAXVISUEL - Manager Invest</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+<!-- ===== INSCRIPTION ===== -->
+<div id="inscriptionForm">
+<h2>BIENVENUE SUR GAINMAXVISUEL</h2>
+<h3>INSCRIVEZ-VOUS DÈS MAINTENANT</h3>
+<select id="pays">
+  <option value="">Sélectionnez votre pays</option>
+  <option value="Burkina Faso">Burkina Faso</option>
+  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+  <option value="Sénégal">Sénégal</option>
+</select>
+<input type="text" id="codePays" placeholder="Code pays (+226)" value="+226">
+<input type="text" id="numTel" placeholder="Numéro de téléphone">
+<input type="text" id="prenomNom" placeholder="Prénom / Nom">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Mot de passe">
+<button class="btn-round" onclick="inscrire()">S'inscrire</button>
+<p style="text-align:center;">Déjà un compte ? <span style="color:blue; cursor:pointer;" onclick="showConnexion()">Connectez-vous</span></p>
+</div>
+
+<!-- ===== CONNEXION ===== -->
+<div id="connexionForm">
+<h2>Connexion</h2>
+<select id="paysC">
+  <option value="">Sélectionnez votre pays</option>
+  <option value="Burkina Faso">Burkina Faso</option>
+  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+  <option value="Sénégal">Sénégal</option>
+</select>
+<input type="text" id="codePaysC" placeholder="Code pays (+226)" value="+226">
+<input type="text" id="numTelC" placeholder="Numéro de téléphone">
+<input type="password" id="passwordC" placeholder="Mot de passe">
+<button class="btn-round" onclick="connexion()">Se connecter</button>
+<p style="text-align:center;"><span style="color:blue; cursor:pointer;" onclick="motDePasseOublie()">Mot de passe oublié ?</span></p>
+</div>
+
+<!-- ===== MOT DE PASSE OUBLIÉ ===== -->
+<div id="recupMDP">
+<h2>Récupération Mot de passe</h2>
+<input type="email" id="emailRecup" placeholder="Entrez votre email">
+<button class="btn-rect" onclick="envoyerRecup()">Envoyer</button>
+</div>
+
+<!-- ===== MESSAGE DE CONFIRMATION ===== -->
+<div id="messageBox">
+<h2 id="messageText"></h2>
+<button class="btn-rect" onclick="continuer()">Continuer</button>
+</div>
+
+<!-- ===== MENU PRINCIPAL ===== -->
+<div id="menuPrincipal">
+<h3>Bienvenue !</h3>
+<div class="btn-group">
+<button class="btn-ellipse" onclick="showRecharge()">Recharger</button>
+<button class="btn-rect" onclick="showRetrait()">Retrait</button>
+<button class="btn-square" onclick="showConditions()">Conditions</button>
+<button class="btn-triangle" onclick="showPlans()">Plans</button>
+</div>
+</div>
+
+<!-- ===== RECHARGE ===== -->
+<div id="rechargeForm">
+<h3>Recharger</h3>
+<select id="montant">
+  <option value="">Sélectionnez le montant</option>
+  <option value="3000">3 000 XOF</option>
+  <option value="5000">5 000 XOF</option>
+  <option value="10000">10 000 XOF</option>
+  <option value="25000">25 000 XOF</option>
+  <option value="50000">50 000 XOF</option>
+</select>
+<select id="paysR">
+  <option value="">Sélectionnez votre pays</option>
+  <option value="Burkina Faso">Burkina Faso</option>
+  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+  <option value="Sénégal">Sénégal</option>
+</select>
+<button class="btn-rect" onclick="rechargeEtape2()">Continuer</button>
+</div>
+
+<!-- ===== NUMERO + OPERATEUR ===== -->
+<div id="rechargeForm2">
+<h3>Numéro et opérateur</h3>
+<input type="text" id="numRecharge" placeholder="Numéro de paiement">
+<select id="operateur">
+  <option value="Orange Money">Orange Money</option>
+</select>
+<button class="btn-rect" onclick="rechargeUSSD()">Continuer</button>
+</div>
+
+<!-- ===== USSD & OTP ===== -->
+<div id="otpSection">
+<h3>Pour valider le paiement, composez : *144*4*6*Montant#</h3>
+<input type="text" id="otpCode" placeholder="Entrez le code OTP reçu">
+<button class="btn-square" onclick="confirmerPaiement()">Confirmer</button>
+<p id="otpMessage" style="color:red; font-weight:bold;"></p>
+</div>
+
+<!-- ===== RETRAIT ===== -->
+<div id="retraitForm">
+<h3>Retrait</h3>
+<input type="text" id="nomRetrait" placeholder="Nom complet">
+<input type="text" id="numRetrait" placeholder="Numéro de téléphone">
+<input type="text" id="montantRetrait" placeholder="Montant">
+<select id="paysRetrait">
+  <option value="">Sélectionnez votre pays</option>
+  <option value="Burkina Faso">Burkina Faso</option>
+  <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+  <option value="Sénégal">Sénégal</option>
+</select>
+<select id="operateurRetrait">
+  <option value="Orange Money">Orange Money</option>
+</select>
+<button class="btn-rect" onclick="envoyerRetrait()">Envoyer demande</button>
+
+<h4>Historique des retraits</h4>
+<table class="historyTable" id="historyRetrait">
+<tr><th>Date/Heure</th><th>Nom</th><th>Numéro</th><th>Montant</th><th>Pays</th><th>Opérateur</th><th>Statut</th><th>Action</th></tr>
+</table>
+</div>
+
+<!-- ===== CONDITIONS ===== -->
+<div id="conditions">
+<h3>Conditions</h3>
+<p>Les informations ici.</p>
+</div>
+
+<!-- ===== PLANS D'INVESTISSEMENT ===== -->
+<div id="plansPage">
+<h2>Plans d'investissement</h2>
+<table class="historyTable" id="plansTable">
+<tr><th>Plan</th><th>Montant</th><th>Revenu quotidien</th><th>Retrait min</th><th>Retrait max</th><th>Disponibilité</th><th>Action</th></tr>
+</table>
+<p id="planMessage" style="color:red; font-weight:bold;"></p>
+</div>
+
+</div>
+
+<!-- ===== MENU BAS ===== -->
+<div class="menu">
+<div onclick="showMenu('menuPrincipal')">Accueil</div>
+<div onclick="showPlans()">Plan</div>
+<div onclick="showPartager()">Partager</div>
+<div onclick="showMoi()">Moi</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

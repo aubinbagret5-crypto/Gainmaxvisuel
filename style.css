@@ -1,0 +1,13 @@
+body{font-family:Arial,sans-serif;background:#f0f2f5;margin:0;padding:0;}
+.container{max-width:600px;margin:0 auto;padding:20px;}
+input, select, button{margin:5px 0;padding:10px;width:100%;border-radius:5px;}
+h2,h3{text-align:center;}
+.btn-round{border:none;border-radius:25px;background:#28a745;color:#fff;font-weight:bold;cursor:pointer;}
+.btn-rect{border:none;border-radius:5px;background:#007bff;color:#fff;font-weight:bold;cursor:pointer;}
+.btn-square{border:none;border-radius:0;background:#ffc107;color:#000;font-weight:bold;cursor:pointer;}
+.btn-ellipse{border:none;border-radius:50px;background:#dc3545;color:#fff;font-weight:bold;cursor:pointer;}
+.btn-triangle{width:0;height:0;border-left:25px solid transparent;border-right:25px solid transparent;border-bottom:50px solid #17a2b8;cursor:pointer;margin:10px auto;}
+.menu{position:fixed;bottom:0;width:100%;display:flex;justify-content:space-around;background:#333;color:#fff;padding:10px 0;}
+.menu div{cursor:pointer;}
+.historyTable{width:100%;border-collapse:collapse;margin-top:10px;}
+.historyTable th, .historyTable td{border:1px solid #ccc;padding:5px;text-align:center;}
